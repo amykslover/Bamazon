@@ -1,10 +1,18 @@
+
 var inquirer = require('inquirer');
 var bamazonCustomer = require('./bamazonCustomer')
+var bamazonManager = require('./bamazonManager')
 
 let { purchaseItem } = bamazonCustomer
 let { displayRecent } = bamazonCustomer
 let { initiatePurchase } = bamazonCustomer
 let { showItems } = bamazonCustomer
+
+let { managerActions } = bamazonManager
+let { addNewItem } = bamazonManager
+let { updateQuantity } = bamazonManager
+let { viewLowInventory } = bamazonManager
+
 
 userDecide()
 
@@ -29,10 +37,13 @@ function userPrompt() {
 			    initiatePurchase()
 		        break;
 		    case 'Manager':
-		    	console.log('No manager role established yet!')
+		   		console.log('No manager functionality established yet!')
+		   		userPrompt()
+		    	// managerActions()
 		        break;
 		   	case 'Supervisor':
-		   		console.log('No manager role established yet!')
+		   		console.log('No supervisor functionality established yet!')
+		   		userPrompt()
 		        break;
 		    default:
 		    	initiatePurchase()

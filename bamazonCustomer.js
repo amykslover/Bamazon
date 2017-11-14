@@ -121,7 +121,7 @@ function displayRecent(id, quantity) {
 	      	});
 
 		    for (var i in rows) {
-		        table.push([rows[0].item_id,rows[0].product_name, rows[0].department_name, rows[0].price, quantity,(quantity*rows[0].price)]);
+		        table.push([rows[0].item_id,rows[0].product_name, rows[0].department_name, quantity, rows[0].price,(quantity*rows[0].price)]);
 		     } 
 		    console.log(table.toString());
 	    }
