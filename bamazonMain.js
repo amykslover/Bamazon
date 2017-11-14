@@ -1,60 +1,38 @@
 var inquirer = require('inquirer');
-var showItems = require('./bamazonCustomer')
+var bamazonCustomer = require('./bamazonCustomer')
 
-var proceed = false
+let { purchaseItem } = bamazonCustomer
+let { displayRecent } = bamazonCustomer
+let { initiatePurchase } = bamazonCustomer
+let { showItems } = bamazonCustomer
+
+userDecide()
+
 function userDecide() {
+	showItems()
+	setTimeout(userPrompt, 2000);
+}
+
+
+function userPrompt() {
 	inquirer.prompt([
     {
       type: 'list',
-      message: 'Role?',
+      message: 'PLEASE SELECT YOUR ROLE:',
       choices: ['Customer', 'Manager', 'Supervisor'],
       name: "usertype"
    	}
   	]).then(function(answer){
-  		console.log(answer)
+
 		switch(answer.usertype) {
 		    case 'Customer':
-			    if(!proceed) {
-			    	showItems()
-					proceed = true;
-			    } 
-			    if(proceed) {
-					setTimeout(function() {
-					
-			        	inquirer.prompt([
-					    {
-					      type: 'input',
-					      message: 'What is the ID of the item you wish to purchase?',
-					      name: "chosenitem"
-					   	}
-					  	]).then(function(answer){ 
-					  		console.log(answer.chosenitem)
-						  	inquirer.prompt([
-						    {
-						      type: 'input',
-						      message: 'What quantity do you want to purchase?',
-						      name: "itemquantity"
-						   	}
-						  	]).then(function(answer){ 
-						  		console.log(answer.itemquantity)
-						  	})
-					  	})
-
-					}, 100)
-					  		console.log(answer.chosenitem)
-					  		console.log(answer.itemquantity)
-
-
-			    }
+			    initiatePurchase();
 		        break;
 		    case 'Manager':
 		        break;
 		   	case 'Supervisor':
 		        break;
 		    default:
-		        
 		}
   	})
-};
-
-userDecide()
+}
