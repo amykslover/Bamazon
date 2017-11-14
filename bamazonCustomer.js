@@ -15,11 +15,12 @@ var queryString = 'SELECT p.item_id, p.product_name, d.department_name, p.stock_
 	      throw error;      
 	    }
 	    else {
+	    	console.log('--------------------------------------------------------------------------------------------------------')	
 			console.log('INVENTORY LIST:')
-			console.log('-----------------------------------------------------------------------------------------------')	
+	    	console.log('--------------------------------------------------------------------------------------------------------')	
 		    var table = new Table({
 		        head: ['ID', 'NAME', 'DEPARTMENT','QUANTITY','PRICE'], 
-		        colWidths: [10, 40, 20, 10, 10]
+		        colWidths: [10, 35, 20, 10, 10]
 		    });
 
 		    for (var i in rows) {
@@ -52,11 +53,11 @@ function purchaseItem() {
 	inquirer.prompt([	
 			{	type: 'input',
 				name: 'itemid',
-				message: 'What item do you want to purchase?'
+				message: 'What is the item_id you would like to purchase?'
 			},
 			{	type: 'input',
 				name: 'itemquantity',
-				message: 'How many items do you want to purchase?'
+				message: 'How many of these items do you want to purchase?'
 			}
 	]).then(function(answer){
 			//Get the quantity of the selected product to check if there is enough
@@ -109,12 +110,14 @@ function displayRecent(id, quantity) {
 	    	throw error;      
 	    }
 	    else {
+
+	    	console.log('--------------------------------------------------------------------------------------------------------')	
 	    	console.log('THE TABLE BELOW IS YOUR RECEIPT OF PURCHASE:')
-			console.log('-------------------------------------------------------------------------------------------------------------')	
+	    	console.log('--------------------------------------------------------------------------------------------------------')	
 
     	  	var table = new Table({
 		        head: ['ID', 'NAME', 'DEPARTMENT','QUANTITY','PRICE','TOTAL OWED'], 
-		        colWidths: [10, 40, 20, 10, 10, 12]
+		        colWidths: [10, 35, 20, 10, 10, 12]
 	      	});
 
 		    for (var i in rows) {

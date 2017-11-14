@@ -10,7 +10,7 @@ userDecide()
 
 function userDecide() {
 	showItems()
-	setTimeout(userPrompt, 2000);
+	setTimeout(userPrompt, 1000);
 }
 
 
@@ -26,13 +26,17 @@ function userPrompt() {
 
 		switch(answer.usertype) {
 		    case 'Customer':
-			    initiatePurchase();
+			    initiatePurchase()
 		        break;
 		    case 'Manager':
+		    	console.log('No manager role established yet!')
 		        break;
 		   	case 'Supervisor':
+		   		console.log('No manager role established yet!')
 		        break;
 		    default:
+		    	initiatePurchase()
+		    	break;
 		}
   	})
 }
